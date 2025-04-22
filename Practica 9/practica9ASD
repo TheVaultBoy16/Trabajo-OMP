@@ -1,0 +1,24 @@
+mpicc anexo1.c -o anexo1 -lm
+
+para probarlo
+
+primero he quitado el bucle y lo he sustituido por MPI_REDUCE
+
+identificador de proceso y luego numero de procesos. en las operaciones MPI (x,y,...)
+
+Collective operations:
+Ej 1:
+
+Rango (del 0 al 3)
+0 1 2 3
+El 3 es el root
+
+Luego se pasa el lo contenido al 3 en columna:
+0
+1
+2
+3
+
+Ejercicio 8:
+
+Aprovecha poco el paralelismo, sumar pesos y grado de concurrencia. (Teoria)
