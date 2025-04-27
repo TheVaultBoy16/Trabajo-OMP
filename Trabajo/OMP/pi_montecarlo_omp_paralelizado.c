@@ -17,14 +17,14 @@ int main (int argc, char *argv[]) { // el *argv[] indica un puntero que apunta a
 
   if (argc >1)
     samples = atoll(argv[1]); // convierte string a long long interger
-    
-  double t1 = omp_get_wtime();
 
   omp_set_num_threads(n);
 
   a=omp_get_num_procs();
+
+  double t1 = omp_get_wtime();
   
-  #pragma omp parallel for private(x,y)
+  #pragma omp parallel for reduction(+:count)
 
   for (i = 0; i < samples; ++i) {
     x = erand48(xi);
