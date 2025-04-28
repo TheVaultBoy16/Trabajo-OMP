@@ -42,7 +42,7 @@ int main (int argc, char *argv[]) { // el *argv[] indica un puntero que apunta a
 
     }
 
-    MPI_REDUCE(&count, &count_global, 1, MPI_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+    MPI_Reduce(&count, &count_global, 1, MPI_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);
     double t2 = MPI_Wtime();
 
