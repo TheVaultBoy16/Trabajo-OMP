@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
     if (rank == 0) {
         double pi = 4.0 * total_count / samples;
         printf("Valor estimado de pi: %.7f\n", pi);
-          printf("Tiempo de ejecucion: %f\n", t2 - t1);
+        printf("Tiempo de ejecucion: %f\n", t2 - t1);
     }
 
 
