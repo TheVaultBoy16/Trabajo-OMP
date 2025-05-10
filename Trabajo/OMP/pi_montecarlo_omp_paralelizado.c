@@ -2,43 +2,48 @@
 #include <stdlib.h>
 #include <omp.h>
 
-int main (int argc, char *argv[]) { // el *argv[] indica un puntero que apunta a un string literal que no puede ser modificado
+int main(int argc, char *argv[])
+
+{ // el *argv[] indica un puntero que apunta a un string literal que no puede ser modificado
 
   // solucion paralelizada
-
-  unsigned short xi[3] = { 1, 2, 3 };
+  int p;
   unsigned long long count = 0;
-  unsigned long long i,a;
-  unsigned long long samples;
-  double x, y;
-  samples=3000000; /*Valor por defecto*/
-  int n=4;
-  
+  unsigned long long i;
+  unsigned long long samples = 3000000;
 
-  if (argc >1)
+  p = omp_get_num_procs(); // obtener numero de procesadores para mostrar por pantalla
+
+  if (argc > 1)
     samples = atoll(argv[1]); // convierte string a long long interger
 
-  omp_set_num_threads(n);
-
-  a=omp_get_num_procs();
-
   double t1 = omp_get_wtime();
-  
-  #pragma omp parallel for reduction(+:count)
 
-  for (i = 0; i < samples; ++i) {
-    x = erand48(xi);
-    y = erand48(xi);
-    if (x*x+y*y <= 1.0) {
-      ++count;
+#pragma omp parallel reduction(+ : count)
+  {
+    unsigned short xi[3];
+    xi[0] = omp_get_thread_num();
+    xi[1] = xi[0] + 1;
+    xi[2] = xi[1] + 1;
+
+    double x, y;
+
+#pragma omp for
+    for (i = 0; i < samples; ++i)
+    {
+      x = erand48(xi);
+      y = erand48(xi);
+      if (x * x + y * y <= 1.0)
+      {
+        ++count;
+      }
     }
   }
 
   double t2 = omp_get_wtime();
-
-  printf ("Valor estimado de pi:  %.7f\n", 4.0*count/samples);
-  printf ("Numero de procesadores: %lld\n",a);
-  printf("Tiempo de ejecucion: %f\n", t2-t1);
-
+  printf("Valor estimado de pi: %.7f\n", 4.0 * count / samples);
+  printf("Tiempo de ejecucion: %f\n", t2 - t1);
   return 0;
 }
+
+// EJECUTAR -> OMP_NUM_THREADS=8 ./pi_montecarlo_omp_paralelizado 200000000
