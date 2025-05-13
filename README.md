@@ -11,6 +11,6 @@ gcc -g -o0 -fopenmp -o pi_montecarlo_omp_paralelizado  pi_montecarlo_omp_paralel
 
 # MPI:
 
-mpicc -lm -o mpi_montecarlo mpi_montecralo.c 
+mpicc -O2 mpi_pi.c -o mpi_pi
 
 mpirun -np (num procesos lanzados) mpi_montecarlo
