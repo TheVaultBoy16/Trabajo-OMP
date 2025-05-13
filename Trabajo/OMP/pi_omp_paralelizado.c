@@ -44,9 +44,13 @@ int main(int argc, char *argv[]) {
 	pi = step * sum;
 	
 	double t2 = omp_get_wtime();
-	
+
+	printf("--------Pi_omp_paralelizado--------\n");
+	printf("Num_threads: %i\n", n);
+	printf("Num_steps: %li\n", numSteps);
 	printf("Valor de pi: %f\n", pi);
 	printf("Tiempo de ejecucion: %f\n", t2-t1);
+	printf("-----------------------------------\n");
 	return 0;
 }
 

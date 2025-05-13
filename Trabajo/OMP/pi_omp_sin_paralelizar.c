@@ -27,8 +27,12 @@ void main()
 
     double t2 = omp_get_wtime();
 
+    printf("--------Pi sin paralelizar--------\n");
+    printf("Num_threads: %i\n", n);
+    printf("Num_steps: %li\n", num_steps);
     printf("Valor de pi: %f\n", pi);
     printf("Tiempo de ejecucion: %f\n", t2-t1);
+    printf("----------------------------------\n");
     
     //return 0;
 

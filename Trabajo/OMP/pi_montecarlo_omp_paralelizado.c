@@ -41,8 +41,13 @@ int main(int argc, char *argv[])
   }
 
   double t2 = omp_get_wtime();
+
+  printf("--------Pi_montecralo_omp_paralelizado--------\n");
+  printf("Num_proc: %i\n", p);
+  printf("Samples: %llu\n", samples);
   printf("Valor estimado de pi: %.7f\n", 4.0 * count / samples);
   printf("Tiempo de ejecucion: %f\n", t2 - t1);
+  printf("----------------------------------------------\n");
   return 0;
 }
 

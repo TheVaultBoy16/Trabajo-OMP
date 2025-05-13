@@ -31,8 +31,11 @@ int main(int argc, char *argv[])
 
     double t2 = omp_get_wtime(); // tiempo final
 
-	printf("Tiempo de ejecucion: %f\n", t2-t1);
-
+    printf("--------Pi_montecralo_sin_paralelizar--------\n");
+    printf("Samples: %llu\n", samples);
     printf("Valor estimado de pi: %.7f\n", 4.0 * count / samples);
+	printf("Tiempo de ejecucion: %f\n", t2-t1);
+    printf("---------------------------------------------\n");
+
     return 0;
 }

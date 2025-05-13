@@ -8,17 +8,17 @@ int main(int argc, char *argv[]) {
     unsigned long long samples = 3000000; // Valor por defecto
     double x, y;
 
-    MPI_Init(&argc, &argv);                // Inicializa MPI
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);  // ID del proceso actual
-    MPI_Comm_size(MPI_COMM_WORLD, &size);  // Número total de procesos
+    MPI_Init(&argc, &argv);                
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);  
+    MPI_Comm_size(MPI_COMM_WORLD, &size);  
 
     if (rank == 0 && argc > 1)
         samples = atoll(argv[1]);
 
-    // Difundir la cantidad total de muestras a todos los procesos
+
     MPI_Bcast(&samples, 1, MPI_UNSIGNED_LONG_LONG, 0, MPI_COMM_WORLD);
 
-    // Cada proceso genera samples / size puntos
+
     unsigned long long local_samples = samples / size;
     unsigned short xi[3] = { (unsigned short)(rank + 1), 2, 3 };
 
@@ -31,13 +31,16 @@ int main(int argc, char *argv[]) {
             ++local_count;
     }
 
-    // Reducir todos los conteos locales en el proceso raíz
+
     MPI_Reduce(&local_count, &total_count, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
     double t2 = MPI_Wtime();
     if (rank == 0) {
         double pi = 4.0 * total_count / samples;
+        printf("--------Montecarlo_mpi--------\n");
+        printf("Samples: %llu\n", samples);
         printf("Valor estimado de pi: %.7f\n", pi);
         printf("Tiempo de ejecucion: %f\n", t2 - t1);
+        printf("------------------------------\n");
     }
 
 
