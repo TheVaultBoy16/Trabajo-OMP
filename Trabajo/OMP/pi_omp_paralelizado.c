@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
 	
 	int i,p;
 	double x, pi, sum = 0.0;
-	long numSteps = 30000000000;
+	long numSteps = 100000;
 	int n=4;
 
     p = omp_get_num_procs(); //obtener numero de procesadores para mostrar por pantalla
