@@ -4,9 +4,6 @@
 
 int main(int argc, char *argv[])
 {
-
-	// solucion paralelizada
-
 	int i, p;
 	double x, pi, sum = 0.0;
 	unsigned long long numSteps = 100000;

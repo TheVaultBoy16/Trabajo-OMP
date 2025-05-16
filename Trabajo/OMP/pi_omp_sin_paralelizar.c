@@ -5,7 +5,7 @@
 static long num_steps = 100000;
 double step, pi;
 
-void main()
+int main(int argc, char *argv[])
 {
     int i;
 
@@ -13,6 +13,15 @@ void main()
 
     int n = 4; // num threads
 
+    	if (argc > 1)
+	{
+		n = atoi(argv[1]);
+	}
+
+    	if (argc > 2)
+	{
+		num_steps = atoll(argv[2]);
+	}
 
     step = 1.0 / (double)num_steps;
 
@@ -34,7 +43,7 @@ void main()
     printf("Tiempo de ejecucion: %f\n", t2-t1);
     printf("----------------------------------\n");
     
-    //return 0;
+    return 0;
 
 }
 
