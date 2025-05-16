@@ -12,8 +12,15 @@ int main(int argc, char *argv[])
     double x, y;
     samples = 3000000; /*Valor por defecto*/
 
-    if (argc > 1)
-        samples = atoll(argv[1]);
+    int n = 4; // num threads
+
+    	if (argc > 1)
+	{
+		n = atoi(argv[1]);
+	}
+
+    if (argc > 2)
+        samples = atoll(argv[2]);
 
     
     double t1 = omp_get_wtime(); // tiempo inicial
@@ -32,6 +39,7 @@ int main(int argc, char *argv[])
     double t2 = omp_get_wtime(); // tiempo final
 
     printf("--------Pi_montecralo_sin_paralelizar--------\n");
+    printf("Num_threads: %i\n", n);
     printf("Samples: %llu\n", samples);
     printf("Valor estimado de pi: %.7f\n", 4.0 * count / samples);
 	printf("Tiempo de ejecucion: %f\n", t2-t1);
@@ -39,3 +47,5 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+
+// EJECUCIÓN -> ./pi_montecarlo_omp 200000000
