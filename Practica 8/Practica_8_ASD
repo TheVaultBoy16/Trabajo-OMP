@@ -1,9 +1,0 @@
-mpicc [-lm] // para ejecutar librerias
-
-mpirun -np 1 ej2-saludos
-
-instalar (apt):
-
-openmpi-bin openmpi-common
-
-libopenmpi-dev
