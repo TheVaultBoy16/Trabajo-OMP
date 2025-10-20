@@ -43,5 +43,3 @@ int main(int argc, char *argv[]) {
     MPI_Finalize();
     return 0;
 }
-
-// EJECUTAR -> mpirun -np 4 ./mpi_pi (ya del carajo con ese numero de muestras)
