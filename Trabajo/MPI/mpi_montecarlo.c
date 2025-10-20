@@ -51,4 +51,4 @@ int main(int argc, char *argv[]) {
 
 
 // EJECUTAR -> mpirun -np 4 ./mpi_montecarlo 200000000
-// yo en casa no puedo correr mas de 4 procesos porque mi procesador cuenta con 4 cores. Aumentar valor de samples para más precision (cuidado con que se queme la CPU xdd)
+// yo en casa no puedo correr mas de 4 procesos porque mi procesador cuenta con 4 cores. Aumentar valor de samples para más precision
